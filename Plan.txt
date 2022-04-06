@@ -1,0 +1,18 @@
+Wat is de stack - lifo
+Welk sortings algoritme - radix
+Radix begrijpen.
+
+Welke functies maken - libft functies gebruiken - 
+functies maken + uitgebreid testen
+
+https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm
+
+
+1:
+t_frame *frame
+t_command_list *list)
+stack->head = stack->head->next;
+t_stack	*stack2 - 
+t_com	*result; - 
+t_stack **stack - 
+((*stack1)->diff - 
