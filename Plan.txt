@@ -2,8 +2,8 @@ Wat is de stack - lifo
 Welk sortings algoritme - radix
 Radix begrijpen.
 
-Welke functies maken - libft functies gebruiken - 
-functies maken + uitgebreid testen
+Welke functies maken - libft functies gebruiken
+
 
 https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm
 
@@ -16,3 +16,16 @@ t_stack	*stack2 -
 t_com	*result; - 
 t_stack **stack - 
 ((*stack1)->diff - 
+
+Algorithm
+
+Step 1 : Parsing, put numbers in the stack A if no errors are detected
+
+Step 2 : Check if the numbers in A are all sorted. If so, end the program without printing anything. It’d be preferable to write a function A_is_sorted()
+
+Step 3 : If the size of A ≤ 5, call function sort_small_stack(). Else, call function sort_big_stack()
+
+Functies:
+Structures, Circulair lists
+bitwise operators
+

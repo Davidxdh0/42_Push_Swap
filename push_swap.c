@@ -6,60 +6,78 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 18:09:58 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/06 14:20:07 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/07 12:22:12 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-# include <limits.h>
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <ctype.h> 
+#include <stddef.h>
 
-int	ft_isdigit(int c)
+int	ft_isdigit(int argc, char *str)
 {
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_isint(long c)
-{
-	return (c >= INT_MIN && c <= INT_MAX);
-}
-
-ft_dupl(char **argv, argc)
-{
-    char    *temp;
-    int     i;
-    int     j;
-
-    i = 0;
-    temp = malloc(sizeof(int) * argc)
-    if (!temp)
-        return (NULL);
-    temp[i] = argv[i];
-    while[argv[i]]
+    int i;
+    
+    i = 1;
+    while (str[i])
     {
-        j = 0
-        while(argv[i] != temp[j] && temp[j])
-        {
-            j++;
-            if (argv[i] == temp[j])
-                return (0);
-        }
-        temp[i] = argv[i]; 
+        if (atoi(argv[i]) > INT_MAX || atoi(argv[i]) < INT_MIN)
+            return (0);
+    }
+	return (1);
+}
+
+int	ft_isint(int argc, char *str)
+{
+    int i;
+    
+    i = 0;
+    while (i <= argc)
+    {
+        i++;
+        printf("int = %d\n", atoi(argv[i]));
+        if (atoi(argv[i]) > INT_MAX || atoi(argv[i]) < INT_MIN)
+            return (0);
         i++;
     }
-    return (1);
+	return (1);
+}
+
+int	ft_dupl(int argc, char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			if (atoi(argv[i]) == atoi(argv[j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int    ft_error(int argc, char **argv)
 {
     int i;
-    i = 0;
-    if (argc <= 1)
-        return ; 
-    while (argc > i)
+    i = 1;
+    if (argc < 2)
+        return (0); 
+    while (i < argc)
     {
-        if (!ft_isdigit(argv[i] || !ft_isint(argv[i]) || ft_dupl(argv[i], argc))
+        if (ft_isint(argc, argv[i]) || ft_dupl(argc, argv[i]) || ft_isdigit(argc, argv[i])))
         {
-            write(3, "Error\n", 6);
+            printf("ft_error\n");
             return (1);
         }
         i++;
@@ -68,11 +86,12 @@ int    ft_error(int argc, char **argv)
 }
 
 
-
-
-int			main(int argc, char **argv)
+int main(int argc, char **argv)
 {   
-    if (ft_error(argc, **argv) == 1)
-        exit();
-    
+    printf("argc = %d\n", argc);
+    if (ft_error(argc, argv) == 1)
+        return (0);
+    else
+         write(1, "geen error\n", 11);
+    return (1);
 }

@@ -1,6 +1,6 @@
 // sa(swap a): Swap the first 2 elements at the top of stacka.
 // Do nothing if there is only one or no elements.
-
+// 
 // sb(swap b): Swap the first 2 elements at the top of stackb.
 // Do nothing if there is only one or no elements.
 
