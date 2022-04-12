@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 18:09:58 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/07 12:22:12 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/12 16:54:09 by yeboa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_isdigit(int argc, char *str)
     i = 1;
     while (str[i])
     {
-        if (atoi(argv[i]) > INT_MAX || atoi(argv[i]) < INT_MIN)
+        if (atoi(str[i]) > INT_MAX || atoi(str[i]) < INT_MIN)
             return (0);
     }
 	return (1);
@@ -58,7 +58,7 @@ int	ft_dupl(int argc, char *str)
 		j = i + 1;
 		while (j < argc)
 		{
-			if (atoi(argv[i]) == atoi(argv[j]))
+			if (atoi(str[i]) == atoi(str[j]))
 				return (1);
 			j++;
 		}
@@ -67,7 +67,7 @@ int	ft_dupl(int argc, char *str)
 	return (0);
 }
 
-int    ft_error(int argc, char **argv)
+int    ft_error(int argc, char *argv)
 {
     int i;
     i = 1;
@@ -89,7 +89,7 @@ int    ft_error(int argc, char **argv)
 int main(int argc, char **argv)
 {   
     printf("argc = %d\n", argc);
-    if (ft_error(argc, argv) == 1)
+    if (ft_error(argc, *argv) == 1)
         return (0);
     else
          write(1, "geen error\n", 11);
