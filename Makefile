@@ -6,38 +6,46 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/26 14:06:32 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/03/31 16:34:06 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/04/13 14:56:09 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
-CC		= gcc
-SRCS	= 
-OBJS	= $(SRCS:.c=.o)
-FLAGS	= -Wall -Wextra
 
-.c.o :
-	${CC} -c ${FLAGS} -o $@ $<
+CC		= gcc  
+FLAGS	= -c -Wall -Wextra -Werror -I${INCLUDE} -I./${LIB_DIR}	  
+INCLUDE = ./include
+LIB_DIR = libft
+LIBFT	= ${LIB_DIR}/libft.a
+SRC_DIR	=	src
+SRC		=	input_check.c\
+			main.c\
+			parser.c	
 
-$(NAME): ${OBJS}
-	ar -rcs $(NAME) $(OBJS)
+vpath %.c ${SRC_DIR}
 
-run:
-	rm -f run
-	${CC} ${FLAGS} $(SRCS) main.c -o run
-	./run
+OBJ_DIR	=	obj
+OBJ		=	$(patsubst %.c, ${OBJ_DIR}/%.o, ${SRC})
 
 all: $(NAME)
 
-clean:
-	rm -f $(OBJS)
-	rm -f $(NAME)
-	rm -f run
+${NAME}: ${OBJ} ${LIBFT}
+		 ${CC} -o $@ $^ -g -fsanitize=address
+		 
+${LIBFT}:
+			${MAKE} -C ${LIB_DIR}
+${OBJ_DIR}/%.o	:	%.c
+			mkdir -p ${OBJ_DIR}
+			${CC} ${FLAGS} -g $< -o $@
 
-fclean: clean
-	rm -f $(NAME)
+clean	:
+			${MAKE} clean -C ${LIB_DIR}
+			rm -rf ${OBJ_DIR}
 
-re: fclean $(NAME)
+fclean	:	clean
+			${MAKE} fclean -C ${LIB_DIR}
+			rm -rf ${NAME}
 
-.PHONY:	all clean fclean
-	
+re		:	fclean all
+
+.PHONY	:	clean fclean all 
