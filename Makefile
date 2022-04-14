@@ -6,7 +6,7 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/26 14:06:32 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/04/13 14:56:09 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/04/14 16:50:28 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ LIBFT	= ${LIB_DIR}/libft.a
 SRC_DIR	=	src
 SRC		=	input_check.c\
 			main.c\
+			list.c\
+			sort.c\
 			parser.c	
 
 vpath %.c ${SRC_DIR}

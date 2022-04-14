@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/13 14:59:56 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/14 16:25:00 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_dupl(char **arg)
 		{
 			if (ft_strncmp(arg[i], arg[j], k) == 0)
             {
-                printf("ft_dupl Error");
+                printf("ft_dupl Error\n");
                 return (0);
             }
             j++;
@@ -73,7 +73,7 @@ int    ft_error(char **arg)
     {
         if (ft_isint(arg[i]) || !ft_dupl(arg) || !ft_isnumber(arg[i]))
         {
-            printf("ft_error Error");
+            printf("ft_error Error\n");
             return (1);
         }
         i++;
@@ -81,4 +81,17 @@ int    ft_error(char **arg)
     return (0);
 }
 
-//sorted?
+int     check_sorted(t_stack *stack)
+{
+    while (stack->next != NULL)
+    {
+        if (stack->i > stack->next->i)
+        {
+            printf("not sorted\n");
+            return (0);
+        }
+        stack = stack->next;
+    }
+    printf("sorted\n");
+    return (1);
+}

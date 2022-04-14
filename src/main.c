@@ -6,40 +6,12 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/13 15:13:23 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/14 16:25:43 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
  
-t_stack	*a_stack(char **arg)
-{
-	t_stack	*a;
-	t_stack	*tmp;
-	long	num;
-	int		i;
-
-	i = -1;
-	a = NULL;
-	while (arg[++i])
-	{
-		num = ft_atol(arg[i]);
-		if (num < INT_MIN || num > INT_MAX)
-			break ;
-		tmp = lst_new(num);
-		if (!tmp)
-			break ;
-		lstadd_back(&a, tmp);
-	}
-	if (arg[i])
-	{
-		free_lst(a);
-		free_exit(arg);
-	}
-	free_mat(arg);
-	return (a);
-}
-
 void	free_arr(char **arg)
 {
 	int	i;
@@ -51,11 +23,47 @@ void	free_arr(char **arg)
 		free(arg[i++]);
 	free(arg);
 }
-void	free_exit(char **arg)
+
+void	free_message_exit(char **arg)
 {
 	free_arr(arg);
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(-1);
+	write(1, "Free_exit\n", 11);
+	exit(0);
+}
+
+void free_list(t_stack *node) 
+{
+	t_stack	*temp;
+	
+  	while (node != NULL) 
+  	{
+    	temp = node->next;
+    	free(node);
+    	node = temp;
+	} 
+}
+
+t_stack	*a_stack(char **arg)
+{
+	t_stack	*a;
+	t_stack	*temp;
+	int		i;
+	int		k;
+
+	i = 0;
+	a = NULL;
+	while (arg[i])
+	{
+		k = ft_atoi(arg[i]);
+		//printf("%d", k);
+		temp = list_new(k);
+		if (!temp)
+			break ;
+		listadd_back(&a, temp);
+		i++;
+	}
+	free_arr(arg);
+	return (a);
 }
 
 int main(int argc, char **argv)
@@ -63,17 +71,28 @@ int main(int argc, char **argv)
     char    **arg;
     t_stack *a;
     t_stack *b;
+	
+
+	if (argc == 1)
+		exit(0);
     arg = get_inp(argc, argv);
     if (ft_error(arg) == 1 || !arg)
-        write(1, "\n1\n", 2);
+		free_message_exit(arg);
     else
-        write(1, "geen error\n", 11);
+        write(1, "werkt\n", 6);
     a = a_stack(arg);
-    b = NULL;
-    // if (!is_sorted(a))
-	// 	start_sort(&a, &b, lst_len(a));
-	// free_lst(a);
-	return (0);
+	b = NULL;
+	printf("list len = %d\n", list_len(a));
 
-   
+	if (!check_sorted(a))
+	 	sort(a, b, list_len(a));
+	// while (a)
+	// {
+	// 	printf("%d ", a->i);
+	// 	a = a->next;
+	// }
+	//sort(a, b,len list a)
+	//??
+	free_list(a); // list freeen
+	return (0);
 }

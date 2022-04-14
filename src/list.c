@@ -1,44 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   list.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/14 10:35:45 by dyeboa        #+#    #+#                 */
+/*   Updated: 2022/04/14 16:22:43 by dyeboa        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_stack	*lst_last(t_stack *stack)
+t_stack	*list_new(int i)
 {
-	while (stack)
-	{
-		if (stack->next == NULL)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
+	t_stack	*list_new;
 
-void	lstadd_back(t_stack **stack, t_stack *new)
-{
-	t_stack	*last;
-
-	last = lst_last(*stack);
-	if (last != NULL)
-	{
-		last->next = new;
-		new->previous = last;
-	}
-	else
-		*stack = new;
-}
-
-t_stack	*lst_new(int num)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
+	list_new = malloc(sizeof(t_stack));
+	if (!list_new)
 		return (NULL);
-	new->num = num;
-	new->previous = NULL;
-	new->next = NULL;
-	return (new);
+	list_new->i = i;
+	list_new->previous = NULL;
+	list_new->next = NULL;
+	return (list_new);
 }
 
-int	lst_len(t_stack *stack)
+int	list_len(t_stack *stack)
 {
 	int	len;
 
@@ -49,4 +36,29 @@ int	lst_len(t_stack *stack)
 		stack = stack->next;
 	}
 	return (len);
+}
+
+t_stack	*list_last(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->next == NULL)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+void	listadd_back(t_stack **stack, t_stack *new)
+{
+	t_stack	*last;
+
+	last = list_last(*stack);
+	if (last != NULL)
+	{
+		last->next = new;
+		new->previous = last;
+	}
+	else
+		*stack = new;
 }

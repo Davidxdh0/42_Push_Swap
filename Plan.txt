@@ -9,7 +9,6 @@ https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms
 
 
 1:
-t_frame *frame
 t_command_list *list)
 stack->head = stack->head->next;
 t_stack	*stack2 - 

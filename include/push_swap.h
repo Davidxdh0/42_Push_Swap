@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 16:36:37 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/13 15:11:17 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/14 16:50:09 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,37 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <string.h>
-#include <limits.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <ctype.h> 
 #include <stddef.h>
 
-typedef struct s_stack
+typedef struct node
 {
-	int				i;
-	struct s_stack	*previous;
-	struct s_stack	*next;
+	int			i;
+	struct node	*previous;
+	struct node	*next;
 }   t_stack;
 
-//Pushswap
+//main.c
+void	free_message_exit(char **mat);
+void	free_arr(char **arg);
+void 	free_list(t_stack *node);
+//parser
+char	**fill_array(int argc, char **argv);
+char	**get_inp(int argc, char **argv);
+//inputcheck
 int     ft_error(char **arg);
 int	    ft_isnumber(char *arg);
 int	    ft_dupl(char **arg);
 int	    ft_isint(char *arg);
-char	**fill_array(int argc, char **argv);
-char	**get_inp(int argc, char **argv);
-int     ft_error(char **arg);
-void	free_exit(char **mat);
-void	free_mat(char **matrix);
+int     check_sorted(t_stack *stack);
+//list.c
+void	listadd_back(t_stack **stack, t_stack *new);
+int		list_len(t_stack *stack);
+t_stack	*list_last(t_stack *stack);
+t_stack	*list_new(int num);
+//sort.c
+void    sort(t_stack *a, t_stack *b, int len);
+
 
 #endif
