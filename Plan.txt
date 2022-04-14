@@ -28,3 +28,16 @@ Functies:
 Structures, Circulair lists
 bitwise operators
 
+/*
+sort struct. (lelijk)
+stack a indexeren
+resultaat bitwisen
+
+sort met commandos index (mooi)
+
+
+pb 
+ra
+pa
+
+ */

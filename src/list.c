@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 10:35:45 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/14 16:22:43 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/14 16:59:13 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ t_stack	*list_last(t_stack *stack)
 	return (NULL);
 }
 
-void	listadd_back(t_stack **stack, t_stack *new)
+void	listadd_back(t_stack **stack, t_stack *current)
 {
 	t_stack	*last;
 
 	last = list_last(*stack);
 	if (last != NULL)
 	{
-		last->next = new;
-		new->previous = last;
+		last->next = current;
+		current->previous = last;
 	}
 	else
-		*stack = new;
+		*stack = current;
 }
