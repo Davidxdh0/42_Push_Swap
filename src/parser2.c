@@ -6,12 +6,13 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:31:44 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/14 12:51:01 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/19 18:45:00 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+// goalkicker.com book
 /* This data is not always stored in a structure, but it is sometimes for ease of use */
 struct Node { 
 int 			data;

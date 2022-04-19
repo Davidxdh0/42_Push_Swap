@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/14 17:24:04 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/19 18:06:56 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int main(int argc, char **argv)
     t_stack *a;
     t_stack *b;
 	
-
 	if (argc == 1)
 		exit(0);
     arg = get_inp(argc, argv);
@@ -92,10 +91,20 @@ int main(int argc, char **argv)
     a = a_stack(arg);
 	b = NULL;
 	printf("list len = %d\n", list_len(a));
-	//printlist(a);
+	// printlist(b);
+	// if (!check_sorted(a))
+	// {
+		// printlist(a);
+		//indexsort(a, b, list_len(a));
+	// }
+	printf("maxnumber = %d\n", maxnumber(a));
+
 	if (!check_sorted(a))
+	{
+	 	// printlist(a);
 	 	sort(a, b, list_len(a));
-	
+	}
+	// printlist(b);
 	//sort(a, b,len list a)
 	//??
 	free_list(a); // list freeen

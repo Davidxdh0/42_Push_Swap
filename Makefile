@@ -6,7 +6,7 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/26 14:06:32 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/04/14 16:50:28 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/04/19 17:04:15 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC		=	input_check.c\
 			main.c\
 			list.c\
 			sort.c\
+			commands.c\
 			parser.c	
 
 vpath %.c ${SRC_DIR}

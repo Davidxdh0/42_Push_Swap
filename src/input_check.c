@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/14 16:25:00 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/04/19 18:03:13 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ int	ft_dupl(char **arg)
 {
 	int	i;
 	int	j;
-    int k; 
+    size_t k; 
 
 	i = 0;
 	while (arg[i])
 	{
 		j = i + 1;
         k = ft_strlen(arg[i]);
-       
+        
 		while (arg[j])
 		{
+            if (ft_strlen(arg[j]) > k)
+                k = ft_strlen(arg[j]);
 			if (ft_strncmp(arg[i], arg[j], k) == 0)
             {
                 printf("ft_dupl Error\n");

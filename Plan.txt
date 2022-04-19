@@ -2,19 +2,8 @@ Wat is de stack - lifo
 Welk sortings algoritme - radix
 Radix begrijpen.
 
-Welke functies maken - libft functies gebruiken
-
-
 https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm
 
-
-1:
-t_command_list *list)
-stack->head = stack->head->next;
-t_stack	*stack2 - 
-t_com	*result; - 
-t_stack **stack - 
-((*stack1)->diff - 
 
 Algorithm
 
@@ -35,9 +24,25 @@ resultaat bitwisen
 
 sort met commandos index (mooi)
 
-
 pb 
 ra
 pa
 
  */
+
+As in radix sort, we need two boxes for 0 and 1 respectively. 
+Here we treat A as box 1 and B as box 0. 
+Then, we start from the rightmost bit to the leftmost bit.
+
+At the i-th digit from the right, if the i-th digit of the top number of A is 0, 
+we perform pb to put this number in stack B. 
+Else, we perform ra to leave it in stack A. 
+After we perform one operation on each number, 
+each of them is in the box that corresponds to its digit, 
+as how we put numbers in the boxes in radix sort.
+
+After we do this for the first bit (the rightmost bit), it must look like this.
+
+The trickiest part must be the condition if ((num>>i)&1 == 1). The result of (num>>i)&1 must be 0 or 1, which is the value of the (i + 1)-th bit of num.
+
+For example, (5>>2)&1 == 1 because
