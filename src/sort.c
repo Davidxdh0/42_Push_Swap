@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/19 18:42:45 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/12 12:52:36 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,8 @@ void    sort(t_stack *a, t_stack *b, int len)
     len = 1;
     b = NULL;
     a = NULL;
+	// printlist(a);
+	// printlist(b);
 }
 /*
 sort struct. (lelijk)

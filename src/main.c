@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/19 18:06:56 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/12 12:51:51 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ int main(int argc, char **argv)
 
 	if (!check_sorted(a))
 	{
-	 	// printlist(a);
+	 	printlist(a);
 	 	sort(a, b, list_len(a));
+		printlist(a);
 	}
 	// printlist(b);
 	//sort(a, b,len list a)
