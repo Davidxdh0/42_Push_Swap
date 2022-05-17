@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/19 18:42:45 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/17 15:36:05 by yeboa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	sort_many(t_stack **a, t_stack **b)
 
 void    indexsort(t_stack *a, t_stack *b, int len)
 {
-    len = 0;
+    len += 1;
     printlist(b);
     while (a != NULL)
     {
