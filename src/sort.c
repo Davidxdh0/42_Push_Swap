@@ -6,11 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2022/05/12 12:52:36 by dyeboa        ########   odam.nl         */
-=======
-/*   Updated: 2022/05/17 15:36:05 by yeboa         ########   odam.nl         */
->>>>>>> 07cf570ee4a8d166b371ddba16d67d5ef75b51ff
+/*   Updated: 2022/05/18 12:33:08 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +62,12 @@ int	lower_numbers(t_stack **radix, t_stack *origin)
 		origin = origin->next;
 	}
 	if (origin)
+	{
 		return (1);
+	}
 	return (0);
 }
+
 int	is_lownb_sorted(t_stack *stack)
 {
 	while (stack)
@@ -106,7 +105,6 @@ void	radix(t_stack **a, t_stack **b)
 		bit_place <<= 1;
 	}
     printlist(*a);
-    exit(0);
 }
 
 void	sort_many(t_stack **a, t_stack **b)

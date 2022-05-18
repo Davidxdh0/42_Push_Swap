@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/12 12:51:51 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/18 14:11:57 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,27 @@ t_stack	*a_stack(char **arg)
 
 void	printlist(t_stack *a)
 {
-	while (a)
+	while (a != NULL)
 	{
 		printf("%d ", a->i);
 		a = a->next;
 	}
+	printf("\n");
+}
+
+void	printlistarthur(t_stack *a)
+{
+	t_stack	*tmp;
+
+	tmp = a;
+	if (!tmp)
+		return ;
+	while (tmp->next != NULL)
+	{
+		printf("[a]: %d", tmp->i);
+		tmp = tmp->next;
+	}
+	printf("[a]: %d\n",  tmp->i);
 }
 
 int main(int argc, char **argv)
@@ -103,9 +119,12 @@ int main(int argc, char **argv)
 	{
 	 	printlist(a);
 	 	sort(a, b, list_len(a));
-		printlist(a);
 	}
-	// printlist(b);
+	//printf("list len = %d en %d\n", list_len(a), a->i);
+	printlist(a);
+	printlistarthur(a);
+	printf("list len = %d en %d\n", list_len(a), a->i);
+	//printlist(b);
 	//sort(a, b,len list a)
 	//??
 	free_list(a); // list freeen

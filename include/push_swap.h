@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 16:36:37 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/12 12:52:08 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/18 13:02:38 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_message_exit(char **mat);
 void	free_arr(char **arg);
 void 	free_list(t_stack *node);
 void	printlist(t_stack *a);
+void	printlistarthur(t_stack *a);
 
 //parser
 char	**fill_array(int argc, char **argv);

@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/11 16:47:48 by yeboa         ########   odam.nl         */
+/*   Updated: 2022/05/18 12:31:47 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_isnumber(char *arg)
 		i++;
     if (!ft_isdigit(arg[i]) && i < k)
 	{
+         printf("!ft_isnumber\n");
     	return (0);
 	}
 	return (1);
@@ -34,7 +35,7 @@ int	ft_isint(char *arg)
 {
     if ((atol(arg) < -2147483648) || (atol(arg) > 2147483647))
     {
-        printf("ft_isint Error\n");
+        printf("!ft_isint\n");
         return (1);
     }
 	return (0);
@@ -51,14 +52,13 @@ int	ft_dupl(char **arg)
 	{
 		j = i + 1;
         k = ft_strlen(arg[i]);
-        
 		while (arg[j])
 		{
             if (ft_strlen(arg[j]) > k)
                 k = ft_strlen(arg[j]);
 			if (ft_strncmp(arg[i], arg[j], k) == 0)
             {
-                printf("ft_dupl Error\n");
+                printf("!ft_dupl\n");
                 return (0);
             }
             j++;
@@ -77,7 +77,7 @@ int    ft_error(char **arg)
     {
         if (ft_isint(arg[i]) || !ft_dupl(arg) || !ft_isnumber(arg[i]))
         {
-            printf("ft_error Error\n");
+            printf("!ft_error\n");
             return (1);
         }
         i++;
@@ -91,11 +91,11 @@ int     check_sorted(t_stack *stack)
     {
         if (stack->i > stack->next->i)
         {
-            printf("not sorted\n");
+            printf("!check_sorted\n");
             return (0);
         }
         stack = stack->next;
     }
-    printf("sorted\n");
+    printf("check_sorted\n");
     return (1);
 }

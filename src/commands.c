@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/19 17:27:07 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/18 15:23:54 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ void	rotate(t_stack **stack)
 	(*stack)->previous = tmp;
 	*stack = (*stack)->next;
 	tmp->next->next = NULL;
+	printf("rotated\n");
 }
 
-// pa(push a): Take the first element at the top ofband put it at the top ofa.
+// pa(push a): Take the first element at the top of b and put it at the top of a.
 // Do nothing ifbis empty.
 
 // pb(push b): Take the first element at the top ofaand put it at the top ofb.

@@ -1,29 +1,34 @@
-Wat is de stack - lifo
-Welk sortings algoritme - radix
-Radix begrijpen.
 
 https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm
 
 
 Algorithm
-
 Step 1 : Parsing, put numbers in the stack A if no errors are detected
-
-Step 2 : Check if the numbers in A are all sorted. If so, end the program without printing anything. It’d be preferable to write a function A_is_sorted()
-
-Step 3 : If the size of A ≤ 5, call function sort_small_stack(). Else, call function sort_big_stack()
+Step 2 : Check if the numbers in A are all sorted. If so, end the program without printing anything. 
+It’d be preferable to write a function A_is_sorted()
+Step 3 : 
+If the size of A ≤ 5, c
+    all function sort_small_stack(). 
+Else, 
+    call function sort_big_stack()
 
 Functies:
 Structures, Circulair lists
 bitwise operators
 
-/*
-sort struct. (lelijk)
+commands werkend maken -
+sort struct. (lelijk) - 
 stack a indexeren
 resultaat bitwisen
 
-sort met commandos index (mooi)
+vandaag:
+code doorlezen, begrijpen hoe alles samenwerkt
+commands werkend - linked lists leren bewerken
+tot 5 werkend krijgen
+bitwise sort maken
+radix toepassen eventueel
 
+sort met commandos index (mooi)
 pb 
 ra
 pa
