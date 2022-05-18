@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/19 18:03:13 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/11 16:47:48 by yeboa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	ft_isnumber(char *arg)
 	while (ft_isdigit(arg[i]))
 		i++;
     if (!ft_isdigit(arg[i]) && i < k)
-        return (0);
+	{
+    	return (0);
+	}
 	return (1);
 }
 
