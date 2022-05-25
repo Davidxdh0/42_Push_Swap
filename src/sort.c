@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/18 12:33:08 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/25 16:51:00 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void    two_numbers(t_stack **a)
 {
-    rotate(a);
+    //rotate(a);
+	swap(a);
 }
 
-void    three_numbers(t_stack *a, t_stack *b)
+// 	421, 412, 214,  241, 142
+void    three_numbers(t_stack **a, int min, int max)
 {
-    if (a->i > a->next->i)
-        pushstack(&b, &a);
-    printlist(b);
+	while(!check_sorted(a))
+	{
+		if ((*a)->i == max)
+			rotate(a);
+		else if ((*a)->i > (*a)->next->i)
+			swap(a);
+		else if ((*a)->i != min)
+			reverse_rotate(a);
+	}
 }
 
 int     maxnumber(t_stack *k)
@@ -38,6 +46,22 @@ int     maxnumber(t_stack *k)
     }
     return (maxnumber);
 }
+
+int		minnumber(t_stack *k)
+{
+	int minnumber;
+
+	minnumber = k->i;
+	while (k)
+    {
+        if (minnumber <= k->i)
+            k = k->next;
+        else
+            minnumber = k->i;
+    }
+    return (minnumber);
+}
+
 int	lower_numbers(t_stack **radix, t_stack *origin)
 {
 	t_stack	*aux;
@@ -87,7 +111,7 @@ void	radix(t_stack **a, t_stack **b)
 	int	stack_len;
 
 	bit_place = 0b00000001;
-	while (!check_sorted(*a))
+	while (!check_sorted(a))
 	{
 		stack_len = list_len(*a);
 		while (stack_len)
@@ -130,41 +154,47 @@ void	sort_many(t_stack **a, t_stack **b)
 //     len_a += len_b;
 // }
 
-void    indexsort(t_stack *a, t_stack *b, int len)
+void    indexsort(t_stack **a, t_stack **b)
 {
-    len += 1;
-    printlist(b);
+    printlist(*b);
     while (a != NULL)
     {
-        b->i = a->i;
-        a = a->next;
-        b = b->next;
+        (*b)->i = (*a)->i;
+        *a = (*a)->next;
+        *b = (*b)->next;
     }
     while (b != NULL)
     {
         while (!check_sorted(b))
         {
-            if ( b->i > b->next->i)
-                b->next->i = b->i;
+            if ( (*b)->i > (*b)->next->i)
+                (*b)->next->i = (*b)->i;
             else
-                b = b->next;
+                *b = (*b)->next;
         }
     }
-    printlist(b);
+    printlist(*b);
 }
 
-void    sort(t_stack *a, t_stack *b, int len)
+void    sort(t_stack **a, t_stack **b)
 {
+	int len;
+	int min;
+	int max;
+	
+	len = list_len(*a);
+	min = minnumber(*a);
+	max = maxnumber(*a);
     while (!check_sorted(a))
     { 
         if (len == 2)
-            two_numbers(&a);
+            two_numbers(a);
         else if (len == 3)
         {
-            three_numbers(a, b);
+            three_numbers(a, min, max);
         }
-        else if (len >= 4)
-            sort_many(&a, &b);
+        else if (len == 4)
+            sort_many(a, b);
         else
             b = NULL;
             //sort_lots()

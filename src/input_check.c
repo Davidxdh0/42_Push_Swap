@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/18 12:31:47 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/24 13:42:50 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,21 @@ int    ft_error(char **arg)
     return (0);
 }
 
-int     check_sorted(t_stack *stack)
+int     check_sorted(t_stack **stack)
 {
-    while (stack->next != NULL)
+    t_stack *temp;
+
+    temp = *stack;
+    while ((*stack)->next != NULL)
     {
-        if (stack->i > stack->next->i)
+        if ((*stack)->i > (*stack)->next->i)
         {
             printf("!check_sorted\n");
             return (0);
         }
-        stack = stack->next;
+        *stack = (*stack)->next;
     }
+    *stack = temp;
     printf("check_sorted\n");
     return (1);
 }

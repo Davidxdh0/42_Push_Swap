@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/18 14:11:57 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/05/25 15:04:25 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,6 @@ void	printlist(t_stack *a)
 	printf("\n");
 }
 
-void	printlistarthur(t_stack *a)
-{
-	t_stack	*tmp;
-
-	tmp = a;
-	if (!tmp)
-		return ;
-	while (tmp->next != NULL)
-	{
-		printf("[a]: %d", tmp->i);
-		tmp = tmp->next;
-	}
-	printf("[a]: %d\n",  tmp->i);
-}
-
 int main(int argc, char **argv)
 {   
     char    **arg;
@@ -107,26 +92,15 @@ int main(int argc, char **argv)
     a = a_stack(arg);
 	b = NULL;
 	printf("list len = %d\n", list_len(a));
-	// printlist(b);
-	// if (!check_sorted(a))
-	// {
-		// printlist(a);
-		//indexsort(a, b, list_len(a));
-	// }
 	printf("maxnumber = %d\n", maxnumber(a));
-
-	if (!check_sorted(a))
-	{
-	 	printlist(a);
-	 	sort(a, b, list_len(a));
-	}
-	//printf("list len = %d en %d\n", list_len(a), a->i);
+	printf("maxnumber = %d\n", minnumber(a));
 	printlist(a);
-	printlistarthur(a);
-	printf("list len = %d en %d\n", list_len(a), a->i);
+	//reverse_rotate(&a);
+	if (!check_sorted(&a))
+	 	sort(&a, &b);
+	printlist(a);
+	printf("list len = %d\n", list_len(a));
 	//printlist(b);
-	//sort(a, b,len list a)
-	//??
-	free_list(a); // list freeen
+	free_list(a);
 	return (0);
 }
