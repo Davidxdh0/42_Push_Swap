@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/24 13:42:50 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 18:29:40 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,11 @@ int     check_sorted(t_stack **stack)
     {
         if ((*stack)->i > (*stack)->next->i)
         {
-            printf("!check_sorted\n");
+            *stack = temp;
             return (0);
         }
         *stack = (*stack)->next;
     }
     *stack = temp;
-    printf("check_sorted\n");
     return (1);
 }

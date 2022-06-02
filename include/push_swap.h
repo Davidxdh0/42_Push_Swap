@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 16:36:37 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/24 14:34:00 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 19:21:34 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ void	listadd_back(t_stack **stack, t_stack *current);
 int		list_len(t_stack *stack);
 t_stack	*list_last(t_stack *stack);
 t_stack	*list_new(int num);
+t_stack	*list_news();
 
 //sort.c
 void    sort(t_stack **a, t_stack **b);
 void    indexsort(t_stack **a, t_stack **b);
 void    two_numbers(t_stack **a);
 void    three_numbers(t_stack **a, int min, int max);
+void	four_five(t_stack **a, int min, int max);
 int     maxnumber(t_stack *a);
 int     minnumber(t_stack *k);
 void	radix(t_stack **a, t_stack **b);

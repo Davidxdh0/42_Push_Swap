@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/25 16:50:19 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 18:47:11 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,28 @@ void	rotate(t_stack **stack)
 
 void reverse_rotate(t_stack **stack)
 {
-	// t_stack *tmp;
-	
+	t_stack *tmp;
+	t_stack *last;
+	printf("reverse rotated\n");
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	list_last(*stack)->next = *stack;
-	(*stack)->previous = NULL;
-	
+	last = list_last(*stack);
+	list_last(*stack)->previous->next = NULL;
+	tmp = *stack;
+	*stack = last;
+	(*stack)->next = tmp;
+	tmp->previous = *stack;
 }
 
 void swap(t_stack **stack)
 {
-	printf("swap");
 	t_stack *temp;
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
+
 	temp = (*stack)->next;
-	printf("temp = %d", temp->i);
-	*stack = (*stack)->next;
-	(*stack)->next = temp;
+	(*stack)->next = temp->next;
+	temp->next = *stack;
+	*stack = temp;
+	printf("swap\n");
 }
 
 // pa(push a): Take the first element at the top of b and put it at the top of a.

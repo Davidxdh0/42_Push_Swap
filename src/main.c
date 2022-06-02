@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/25 15:04:25 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 17:45:35 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,10 @@ int main(int argc, char **argv)
 	b = NULL;
 	printf("list len = %d\n", list_len(a));
 	printf("maxnumber = %d\n", maxnumber(a));
-	printf("maxnumber = %d\n", minnumber(a));
+	printf("minnumber = %d\n", minnumber(a));
 	printlist(a);
 	//reverse_rotate(&a);
+	//swap(&a);
 	if (!check_sorted(&a))
 	 	sort(&a, &b);
 	printlist(a);

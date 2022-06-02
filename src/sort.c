@@ -6,12 +6,12 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/05/25 16:51:00 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 19:21:47 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 void    two_numbers(t_stack **a)
 {
     //rotate(a);
@@ -21,15 +21,50 @@ void    two_numbers(t_stack **a)
 // 	421, 412, 214,  241, 142
 void    three_numbers(t_stack **a, int min, int max)
 {
+	min = 0;
 	while(!check_sorted(a))
 	{
 		if ((*a)->i == max)
 			rotate(a);
 		else if ((*a)->i > (*a)->next->i)
 			swap(a);
-		else if ((*a)->i != min)
+		else
 			reverse_rotate(a);
 	}
+}
+
+void	four_five(t_stack **a, int min, int max)
+{
+	t_stack *b;
+	int laaginb;
+
+	b = list_news();
+	
+	laaginb = 0;
+	while(!check_sorted(a))
+	{
+		printlist(*a);
+		sleep(1);
+		if ((*a)->i == max)
+		{
+			rotate(a);
+		}
+		else if ((*a)->i > (*a)->next->i)
+			swap(a);
+		else if ((*a)->i == min && laaginb < 2)
+		{
+			pushstack(&b, a);
+			laaginb += 1;
+			min = minnumber(*a);
+		}
+		else
+			reverse_rotate(a);
+	}
+	while(b)
+	{
+		pushstack(a, &b);
+	}
+	
 }
 
 int     maxnumber(t_stack *k)
@@ -185,20 +220,21 @@ void    sort(t_stack **a, t_stack **b)
 	len = list_len(*a);
 	min = minnumber(*a);
 	max = maxnumber(*a);
-    while (!check_sorted(a))
-    { 
+	printf("sort len = %d\n", len);
+
         if (len == 2)
             two_numbers(a);
         else if (len == 3)
         {
+			printf("len 3\n");
             three_numbers(a, min, max);
         }
         else if (len == 4)
-            sort_many(a, b);
+             four_five(a, min, max);
         else
-            b = NULL;
+            sort_many(a, b);
             //sort_lots()
-    }
+    
     len = 1;
     b = NULL;
     a = NULL;
