@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 10:35:45 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 19:33:10 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/02 19:39:05 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,6 @@ t_stack	*list_new(int i)
 	list_new->next = NULL;
 	return (list_new);
 }
-
-t_stack	*list_news()
-{
-	t_stack	*list_new;
-
-	list_new = malloc(sizeof(t_stack));
-	if (!list_new)
-		return (NULL);
-	list_new->i = NULL;
-	list_new->previous = NULL;
-	list_new->next = NULL;
-	return (list_new);
-}
-
 
 int	list_len(t_stack *stack)
 {

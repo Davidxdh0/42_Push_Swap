@@ -6,32 +6,29 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 18:47:11 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 18:48:39 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // push from stack src to stack dest
-void	pushstack(t_stack **dest, t_stack **src)
+void	pushstack(t_stack **dest, t_stack **src, char stack)
 {
-	t_stack	*tmp;
-
+	t_stack *tmp;
+	
 	if (!src || !*src)
-		return ;
-	tmp = NULL;
-	if ((*src)->next)
-	{
-		tmp = (*src)->next;
-		tmp->previous = NULL;
-	}
-	if (dest && *dest)
-		(*dest)->previous = *src;
-	(*src)->next = *dest;
-	*dest = *src;
-	*src = tmp;
+ 		return ;
+	tmp = *src;
+	*src = (*src)->next;
+	tmp->next = *dest;
+	(*dest) = tmp;
+	if (stack == 'a')
+		printf("pa\n");
+	else
+		printf("pb\n");
 }
-
+ 
 //rotate 
 void	rotate(t_stack **stack)
 {
@@ -45,14 +42,14 @@ void	rotate(t_stack **stack)
 	(*stack)->previous = tmp;
 	*stack = (*stack)->next;
 	tmp->next->next = NULL;
-	printf("rotated\n");
+	printf("ra\n");
 }
 
-void reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
 	t_stack *tmp;
 	t_stack *last;
-	printf("reverse rotated\n");
+	
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	last = list_last(*stack);
@@ -61,9 +58,10 @@ void reverse_rotate(t_stack **stack)
 	*stack = last;
 	(*stack)->next = tmp;
 	tmp->previous = *stack;
+	printf("rra\n");
 }
 
-void swap(t_stack **stack)
+void swap(t_stack **stack, char stackchar)
 {
 	t_stack *temp;
 
@@ -71,19 +69,8 @@ void swap(t_stack **stack)
 	(*stack)->next = temp->next;
 	temp->next = *stack;
 	*stack = temp;
-	printf("swap\n");
+	if (stackchar == 'a')
+		printf("sa\n");
+	else 
+		printf("sb");
 }
-
-// pa(push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing ifbis empty.
-
-// pb(push b): Take the first element at the top ofaand put it at the top ofb.
-// Do nothing ifais empty.
-
-// ra(rotate a): Shift up all elements of stackaby 1.
-// The first element becomes the last one.
-
-// rb(rotate b): Shift up all elements of stackbby 1.
-// The first element becomes the last one.
-
-// rr:raandrbat the same time.

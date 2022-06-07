@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 16:36:37 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 19:21:34 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 17:52:57 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,25 @@ void	listadd_back(t_stack **stack, t_stack *current);
 int		list_len(t_stack *stack);
 t_stack	*list_last(t_stack *stack);
 t_stack	*list_new(int num);
-t_stack	*list_news();
 
 //sort.c
 void    sort(t_stack **a, t_stack **b);
 void    indexsort(t_stack **a, t_stack **b);
 void    two_numbers(t_stack **a);
 void    three_numbers(t_stack **a, int min, int max);
-void	four_five(t_stack **a, int min, int max);
+void	four(t_stack **a, int min, int max);
+void	five(t_stack **a, int min);
 int     maxnumber(t_stack *a);
 int     minnumber(t_stack *k);
+int		secondminnumber(t_stack *k);
 void	radix(t_stack **a, t_stack **b);
-int		lower_numbers(t_stack **radix, t_stack *origin);
+void	index_numbers(t_stack **radix, t_stack *origin);
 void	sort_many(t_stack **a, t_stack **b);
 int		is_lownb_sorted(t_stack *stack);
 
 //commands.c
-void	pushstack(t_stack **dest, t_stack **src);
+void	pushstack(t_stack **dest, t_stack **src, char stack);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
-void	swap(t_stack **stack);
+void	swap(t_stack **stack, char stackchar);
 #endif

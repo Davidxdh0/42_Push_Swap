@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 18:29:40 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 11:38:49 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int    ft_error(char **arg)
     }
     return (0);
 }
-
+// checks stack & goes back to first node.
 int     check_sorted(t_stack **stack)
 {
     t_stack *temp;

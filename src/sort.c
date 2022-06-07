@@ -6,251 +6,213 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 19:21:47 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 18:51:02 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-void    two_numbers(t_stack **a)
+void two_numbers(t_stack **a)
 {
-    //rotate(a);
-	swap(a);
+	swap(a, 'a');
 }
 
 // 	421, 412, 214,  241, 142
-void    three_numbers(t_stack **a, int min, int max)
+void three_numbers(t_stack **a, int min, int max)
 {
+
 	min = 0;
-	while(!check_sorted(a))
+
+	while (!check_sorted(a))
 	{
 		if ((*a)->i == max)
 			rotate(a);
 		else if ((*a)->i > (*a)->next->i)
-			swap(a);
+			swap(a, 'a');
 		else
 			reverse_rotate(a);
 	}
 }
 
-void	four_five(t_stack **a, int min, int max)
+void four(t_stack **a, int min, int max)
 {
 	t_stack *b;
-	int laaginb;
+	int flag;
 
-	b = list_news();
-	
-	laaginb = 0;
-	while(!check_sorted(a))
+	b = NULL;
+	flag = 0;
+	while ((*a)->i != min && (*a)->i != max)
+		rotate(a);
+	if ((*a)->i == max)
+		flag = 1;
+	pushstack(&b, a, 'b');
+	three_numbers(a, minnumber(*a), maxnumber(*a));
+	pushstack(a, &b, 'a');
+	if (flag == 1)
+		rotate(a);
+}
+
+void five(t_stack **a, int min)
+{
+	t_stack *b;
+	int countb;
+
+	b = NULL;
+	countb = 0;
+	while (countb != 2)
 	{
-		printlist(*a);
-		sleep(1);
-		if ((*a)->i == max)
+		if ((*a)->i == min || (*a)->i == maxnumber(*a) || ((*a)->i == secondminnumber(*a) && countb == 0))
 		{
-			rotate(a);
-		}
-		else if ((*a)->i > (*a)->next->i)
-			swap(a);
-		else if ((*a)->i == min && laaginb < 2)
-		{
-			pushstack(&b, a);
-			laaginb += 1;
+			pushstack(&b, a, 'b');
 			min = minnumber(*a);
+			countb++;
 		}
 		else
-			reverse_rotate(a);
+			rotate(a);
 	}
-	while(b)
-	{
-		pushstack(a, &b);
-	}
-	
+	three_numbers(a, minnumber(*a), maxnumber(*a));
+	pushstack(a, &b, 'a');
+	if ((*a)->i != minnumber(*a))
+		rotate(a);
+	pushstack(a, &b, 'a');
+	if ((*a)->i != minnumber(*a) && (*a)->i != secondminnumber(*a))
+		rotate(a);
+	if ((*a)->i != minnumber(*a))
+		swap(a, 'a');
+	free_list(b);
 }
 
-int     maxnumber(t_stack *k)
+int maxnumber(t_stack *k)
 {
-    int maxnumber;
-    
-    maxnumber = k->i;
-    while (k)
-    {
-        if (maxnumber >= k->i)
-            k = k->next;
-        else
-            maxnumber = k->i;
-    }
-    return (maxnumber);
+	int maxnumber;
+
+	maxnumber = k->i;
+	while (k)
+	{
+		if (maxnumber >= k->i)
+			k = k->next;
+		else
+			maxnumber = k->i;
+	}
+	return (maxnumber);
 }
 
-int		minnumber(t_stack *k)
+int minnumber(t_stack *k)
 {
 	int minnumber;
 
 	minnumber = k->i;
 	while (k)
-    {
-        if (minnumber <= k->i)
-            k = k->next;
-        else
-            minnumber = k->i;
-    }
-    return (minnumber);
+	{
+		if (minnumber <= k->i)
+			k = k->next;
+		else
+			minnumber = k->i;
+	}
+	return (minnumber);
 }
 
-int	lower_numbers(t_stack **radix, t_stack *origin)
+int secondminnumber(t_stack *k)
 {
-	t_stack	*aux;
-	t_stack	*first_el;
-	int		bigger_than;
+	int minnumbers;
+	int lowest;
 
-	first_el = origin;
-	while (origin)
+	lowest = minnumber(k);
+	minnumbers = k->i;
+	while (k)
 	{
-		aux = first_el;
+		if (minnumbers <= k->i || lowest == k->i)
+			k = k->next;
+		else
+			minnumbers = k->i;
+	}
+	return (minnumbers);
+}
+//radix is leeg in het begin
+//radix wordth ingevuld met index ipv nummers.
+void index_numbers(t_stack **radix, t_stack *a)
+{
+	t_stack *temp_a;
+	t_stack *top_stack;
+	int bigger_than;
+
+	top_stack = a;
+	while (a)
+	{
+		temp_a = top_stack;
 		bigger_than = 0;
-		while (aux)
+		while (temp_a)
 		{
-			if (origin->i > aux->i)
+			if (a->i > temp_a->i)
 				bigger_than++;
-			aux = aux->next;
+			temp_a = temp_a->next;
 		}
-		aux = list_new(bigger_than);
-		if (!aux)
-			break ;
-		listadd_back(radix, aux);
-		origin = origin->next;
+		temp_a = list_new(bigger_than);
+		if (!temp_a)
+		{
+			free_list(temp_a);
+			free_list(top_stack);
+			break;
+		}
+		listadd_back(radix, temp_a);
+		a = a->next;
 	}
-	if (origin)
-	{
-		return (1);
-	}
-	return (0);
 }
 
-int	is_lownb_sorted(t_stack *stack)
+void radix(t_stack **a, t_stack **b)
 {
-	while (stack)
-	{
-		if (stack->next)
-			if (stack->next->i - stack->i != 1)
-				return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-
-void	radix(t_stack **a, t_stack **b)
-{
-	int	bit_place;
-	int	stack_len;
+	int bit_place;
+	int len;
 
 	bit_place = 0b00000001;
 	while (!check_sorted(a))
 	{
-		stack_len = list_len(*a);
-		while (stack_len)
+		len = list_len(*a);
+		while (len)
 		{
 			if (((*a)->i & bit_place))
 				rotate(a);
 			else
-				pushstack(b, a);
-			if (is_lownb_sorted(*a))
-				break ;
-			stack_len--;
+				pushstack(b, a, 'b');
+			if (check_sorted(a))
+				break;
+			len--;
 		}
 		while (*b)
-			pushstack(a, b);
+			pushstack(a, b, 'a');
 		bit_place <<= 1;
+		//printf("bitplace = %d\n", bit_place);
 	}
-    printlist(*a);
 }
 
-void	sort_many(t_stack **a, t_stack **b)
+void sort_many(t_stack **a, t_stack **b)
 {
-	t_stack	*radix_stack;
+	t_stack *radix_stack;
 
 	radix_stack = NULL;
-	if (lower_numbers(&radix_stack, *a))
-	{
-		free_list(*a);
-		free_list(radix_stack);
-		exit(-1);
-	}
+	index_numbers(&radix_stack, *a);
 	radix(&radix_stack, b);
 	free_list(radix_stack);
 }
 
-// void    radix(t_stack *a, t_stack *b)
-// {
-//     int len_a = list_len(a); 
-//     int len_b = list_len(b);
-
-//     len_a += len_b;
-// }
-
-void    indexsort(t_stack **a, t_stack **b)
-{
-    printlist(*b);
-    while (a != NULL)
-    {
-        (*b)->i = (*a)->i;
-        *a = (*a)->next;
-        *b = (*b)->next;
-    }
-    while (b != NULL)
-    {
-        while (!check_sorted(b))
-        {
-            if ( (*b)->i > (*b)->next->i)
-                (*b)->next->i = (*b)->i;
-            else
-                *b = (*b)->next;
-        }
-    }
-    printlist(*b);
-}
-
-void    sort(t_stack **a, t_stack **b)
+void sort(t_stack **a, t_stack **b)
 {
 	int len;
 	int min;
 	int max;
-	
+
 	len = list_len(*a);
 	min = minnumber(*a);
 	max = maxnumber(*a);
-	printf("sort len = %d\n", len);
-
-        if (len == 2)
-            two_numbers(a);
-        else if (len == 3)
-        {
-			printf("len 3\n");
-            three_numbers(a, min, max);
-        }
-        else if (len == 4)
-             four_five(a, min, max);
-        else
-            sort_many(a, b);
-            //sort_lots()
-    
-    len = 1;
-    b = NULL;
-    a = NULL;
-	// printlist(a);
-	// printlist(b);
+	if (len == 2)
+		two_numbers(a);
+	else if (len == 3)
+		three_numbers(a, min, max);
+	else if (len == 4)
+		four(a, min, max);
+	else if (len == 5)
+		five(a, min);
+	else
+		sort_many(a, b);
+	// printlist(*a);
 }
-/*
-sort struct. (lelijk)
-stack a indexeren
-resultaat bitwisen
-
-sort met commandos index (mooi)
-
-
-pb 
-ra
-pa
-
- */
