@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 10:35:45 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/02 19:39:05 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 19:33:52 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ void	listadd_back(t_stack **stack, t_stack *current)
 	}
 	else
 		*stack = current;
+}
+
+void	printlist(t_stack *a)
+{
+	while (a != NULL)
+	{
+		printf("%d ", a->i);
+		a = a->next;
+	}
+	printf("\n");
 }

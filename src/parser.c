@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 18:09:58 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/04/13 14:56:26 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 19:13:41 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	**fill_array(int argc, char **argv)
 		return (NULL);
 	i = 0;
 	while (i < argc - 1)
-    {
+	{
 		arr[i] = ft_strdup(argv[i]);
-        i++;
-    }
+		i++;
+	}
 	arr[i] = NULL;
 	return (arr);
 }

@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 18:48:39 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/07 19:28:09 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 // push from stack src to stack dest
 void	pushstack(t_stack **dest, t_stack **src, char stack)
 {
-	t_stack *tmp;
-	
+	t_stack	*tmp;
+
 	if (!src || !*src)
- 		return ;
+		return ;
 	tmp = *src;
 	*src = (*src)->next;
 	tmp->next = *dest;
@@ -28,8 +28,8 @@ void	pushstack(t_stack **dest, t_stack **src, char stack)
 	else
 		printf("pb\n");
 }
- 
 //rotate 
+
 void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -47,9 +47,9 @@ void	rotate(t_stack **stack)
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack *tmp;
-	t_stack *last;
-	
+	t_stack	*tmp;
+	t_stack	*last;
+
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	last = list_last(*stack);
@@ -61,9 +61,9 @@ void	reverse_rotate(t_stack **stack)
 	printf("rra\n");
 }
 
-void swap(t_stack **stack, char stackchar)
+void	swap(t_stack **stack, char stackchar)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = (*stack)->next;
 	(*stack)->next = temp->next;
@@ -71,6 +71,6 @@ void swap(t_stack **stack, char stackchar)
 	*stack = temp;
 	if (stackchar == 'a')
 		printf("sa\n");
-	else 
+	else
 		printf("sb");
 }
