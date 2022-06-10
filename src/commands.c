@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 12:53:49 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 14:50:47 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	pushstack(t_stack **dest, t_stack **src, char stack)
 	tmp->next = *dest;
 	(*dest) = tmp;
 	if (stack == 'a')
-		printf("pa\n");
+		write(1, "pa\n", 3);
 	else
-		printf("pb\n");
+		write(1, "pb\n", 3);
 }
 
 //rotate 
@@ -42,7 +42,7 @@ void	rotate(t_stack **stack)
 	(*stack)->previous = tmp;
 	*stack = (*stack)->next;
 	tmp->next->next = NULL;
-	printf("ra\n");
+	write(1, "ra\n", 3);
 }
 
 void	reverse_rotate(t_stack **stack)
@@ -58,7 +58,7 @@ void	reverse_rotate(t_stack **stack)
 	*stack = last;
 	(*stack)->next = tmp;
 	tmp->previous = *stack;
-	printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	swap(t_stack **stack, char stackchar)
@@ -72,7 +72,7 @@ void	swap(t_stack **stack, char stackchar)
 	temp->next = *stack;
 	*stack = temp;
 	if (stackchar == 'a')
-		printf("sa\n");
+		write(1, "sa\n", 3);
 	else
-		printf("sb");
+		write(1, "sb\n", 3);
 }
