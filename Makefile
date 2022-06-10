@@ -6,19 +6,20 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/26 14:06:32 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/06/10 16:44:14 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/06/10 18:13:58 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+# Program name
 NAME	= push_swap
+CC = gcc
 
-CC		= gcc  
-FLAGS	= -c -Wall -Wextra -Werror -I${INCLUDE} -I./${LIB_DIR}	  
+CFLAGS = -Wall -Wextra -Werror -I ${INCLUDE}
 INCLUDE = ./include
-LIB_DIR = libft
-LIBFT	= ${LIB_DIR}/libft.a
+
+
 SRC_DIR	=	src
-SRC		=	input_check.c\
+SRC_FILES =	input_check.c\
 			main.c\
 			list.c\
 			sort.c\
@@ -27,30 +28,45 @@ SRC		=	input_check.c\
 			sort_small.c\
 			sort_utils.c
 
-vpath %.c ${SRC_DIR}
-
+HEADER_FILES = 	push_swap.h \
+			
+# object files
 OBJ_DIR	=	obj
-OBJ		=	$(patsubst %.c, ${OBJ_DIR}/%.o, ${SRC})
+OBJ 	= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 
+# Libft
+LIBFT_DIR = libft
+
+
+
+# all
 all: $(NAME)
 
-${NAME}: ${OBJ} ${LIBFT}
-		 ${CC} -o $@ $^ -g -fsanitize=address
-		 
-${LIBFT}:
-			${MAKE} -C ${LIB_DIR}
-${OBJ_DIR}/%.o	:	%.c
-			mkdir -p ${OBJ_DIR}
-			${CC} ${FLAGS} -g $< -o $@
+.c.o:
+	${CC} ${CFLAGS} -I$(INCLUDE) -c $< -o ${<:.c=.o}
+			
+# obj dir
+${OBJ_DIR}:
+	mkdir -p ${OBJ_DIR}
 
-clean	:
-			${MAKE} clean -C ${LIB_DIR}
-			rm -rf ${OBJ_DIR}
+# Libft
+$(LIBFT):
+	make -C libft
 
-fclean	:	clean
-			${MAKE} fclean -C ${LIB_DIR}
-			rm -rf ${NAME}
+# Build executable
+${NAME}: ${OBJ_FILES} 
+	$(CC) $(CFLAGS) $^ libft/$(LIBFT) -o $@
 
-re		:	fclean all
+$(OBJ_FILES): $(OBJ_DIR)/%.o : %.c $(HEADER_FILES)
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+clean:
+	rm -rf ${OBJ_DIR}
+	${MAKE} fclean -C ${LIB_DIR}
 
-.PHONY	:	clean fclean all 
+fclean:	clean
+	rm -rf ${NAME}
+
+re : fclean all
+
+.PHONY : clean fclean all 
