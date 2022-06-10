@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 18:09:58 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:13:41 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 14:42:08 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**fill_array(int argc, char **argv)
 	char	**arr;
 	int		i;
 
-	if (argc < 1 || !argv)
+	if (!argv)
 		return (NULL);
 	arr = malloc(sizeof(char *) * argc);
 	if (!arr)
@@ -30,13 +30,4 @@ char	**fill_array(int argc, char **argv)
 	}
 	arr[i] = NULL;
 	return (arr);
-}
-
-char	**get_inp(int argc, char **argv)
-{
-	if (argc == 2)
-		return (ft_split(argv[1], ' '));
-	else if (argc > 2)
-		return (fill_array(argc, &(argv[1])));
-	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:30:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:36:21 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 11:33:39 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	four(t_stack **a, int min, int max)
 		rotate(a);
 }
 
-void	five(t_stack **a, int min)
+void	five(t_stack **a, int mi)
 {
 	t_stack	*b;
 	int		i;
@@ -58,10 +58,10 @@ void	five(t_stack **a, int min)
 	i = 0;
 	while (i != 2)
 	{
-		if ((*a)->i == min || (*a)->i == maxnumber(*a) || ((*a)->i == scmnnbr(*a) && i == 0))
+		if ((*a)->i == mi || (*a)->i == m(*a) || ((*a)->i == sm(*a) && i == 0))
 		{
 			pushstack(&b, a, 'b');
-			min = minnumber(*a);
+			mi = minnumber(*a);
 			i++;
 		}
 		else
@@ -72,7 +72,7 @@ void	five(t_stack **a, int min)
 	if ((*a)->i != minnumber(*a))
 		rotate(a);
 	pushstack(a, &b, 'a');
-	if ((*a)->i != minnumber(*a) && (*a)->i != scmnnbr(*a))
+	if ((*a)->i != minnumber(*a) && (*a)->i != sm(*a))
 		rotate(a);
 	if ((*a)->i != minnumber(*a))
 		swap(a, 'a');

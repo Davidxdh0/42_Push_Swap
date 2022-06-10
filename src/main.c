@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:34:00 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 14:41:38 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ void	free_arr(char **arg)
 	free(arg);
 }
 
-void	free_message_exit(char **arg)
-{
-	free_arr(arg);
-	write(1, "Free_exit\n", 11);
-	exit(0);
-}
-
 void	free_list(t_stack *node)
 {
 	t_stack	*temp;
@@ -41,6 +34,13 @@ void	free_list(t_stack *node)
 		free(node);
 		node = temp;
 	}
+}
+
+void	free_message_exit(char **arg)
+{
+	free_arr(arg);
+	write(1, "Error\n", 6);
+	exit(0);
 }
 
 t_stack	*a_stack(char **arg)
@@ -71,9 +71,9 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc == 1)
+	if (argc == 1 || argc == 2)
 		exit(0);
-	arg = get_inp(argc, argv);
+	arg = fill_array(argc, &argv[1]);
 	if (ft_error(arg) == 1 || !arg)
 		free_message_exit(arg);
 	a = a_stack(arg);

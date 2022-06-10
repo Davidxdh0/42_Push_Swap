@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/19 17:06:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:28:09 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 12:53:49 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	pushstack(t_stack **dest, t_stack **src, char stack)
 	else
 		printf("pb\n");
 }
-//rotate 
 
+//rotate 
 void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -65,6 +65,8 @@ void	swap(t_stack **stack, char stackchar)
 {
 	t_stack	*temp;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
 	temp = (*stack)->next;
 	(*stack)->next = temp->next;
 	temp->next = *stack;

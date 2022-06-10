@@ -6,13 +6,12 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:35:10 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 13:49:52 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//radix is leeg in het begin
-//radix wordth ingevuld met index ipv nummers.
+
 void	index_numbers(t_stack **radix, t_stack *a)
 {
 	t_stack	*temp_a;
@@ -34,7 +33,6 @@ void	index_numbers(t_stack **radix, t_stack *a)
 		if (!temp_a)
 		{
 			free_list(temp_a);
-			free_list(top_stack);
 			break ;
 		}
 		listadd_back(radix, temp_a);
@@ -47,7 +45,7 @@ void	radix(t_stack **a, t_stack **b)
 	int	bit_place;
 	int	len;
 
-	bit_place = 0b00000001;
+	bit_place = 1;
 	while (!check_sorted(a))
 	{
 		len = list_len(*a);
@@ -63,7 +61,7 @@ void	radix(t_stack **a, t_stack **b)
 		}
 		while (*b)
 			pushstack(a, b, 'a');
-		bit_place <<= 1;
+		bit_place = bit_place << 1;
 	}
 }
 

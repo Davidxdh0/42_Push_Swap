@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:08:39 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/07 19:35:00 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 14:42:20 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ void	printlist(t_stack *a);
 
 //parser
 char	**fill_array(int argc, char **argv);
-char	**get_inp(int argc, char **argv);
 
-//inputcheck
+//check
 int		ft_error(char **arg);
 int		ft_isnumber(char *arg);
 int		ft_dupl(char **arg);
@@ -57,19 +56,21 @@ t_stack	*list_new(int num);
 //sort.c
 void	sort(t_stack **a, t_stack **b);
 void	indexsort(t_stack **a, t_stack **b);
+void	radix(t_stack **a, t_stack **b);
+void	index_numbers(t_stack **radix, t_stack *origin);
+void	sort_many(t_stack **a, t_stack **b);
+
+//sort_utils.c
+int		maxnumber(t_stack *a);
+int		m(t_stack *k);
+int		minnumber(t_stack *k);
+int		sm(t_stack *k);
+
+//sort_small.c
 void	two_numbers(t_stack **a);
 void	three_numbers(t_stack **a, int max);
 void	four(t_stack **a, int min, int max);
 void	five(t_stack **a, int min);
-int		maxnumber(t_stack *a);
-int		minnumber(t_stack *k);
-int		scmnnbr(t_stack *k);
-void	radix(t_stack **a, t_stack **b);
-void	index_numbers(t_stack **radix, t_stack *origin);
-void	sort_many(t_stack **a, t_stack **b);
-int		is_lownb_sorted(t_stack *stack);
-
-//sort.utils
 
 //commands.c
 void	pushstack(t_stack **dest, t_stack **src, char stack);
