@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 14:41:38 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 16:43:13 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ t_stack	*a_stack(char **arg)
 		k = ft_atoi(arg[i]);
 		temp = list_new(k);
 		if (!temp)
+		{
+			free_list(temp);
 			break ;
+		}
 		listadd_back(&a, temp);
 		i++;
 	}
@@ -71,9 +74,9 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc == 1 || argc == 2)
+	if (argc == 1)
 		exit(0);
-	arg = fill_array(argc, &argv[1]);
+	arg = get_inp(argc, argv);
 	if (ft_error(arg) == 1 || !arg)
 		free_message_exit(arg);
 	a = a_stack(arg);

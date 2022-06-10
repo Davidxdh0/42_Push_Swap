@@ -6,23 +6,13 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:08:39 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 14:42:20 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/10 16:50:01 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include <string.h>
-# include <stdio.h>
-# include <ctype.h> 
-# include <stddef.h>
 
 typedef struct node
 {
@@ -39,6 +29,7 @@ void	printlist(t_stack *a);
 
 //parser
 char	**fill_array(int argc, char **argv);
+char	**get_inp(int argc, char **argv);
 
 //check
 int		ft_error(char **arg);
