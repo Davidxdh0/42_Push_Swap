@@ -6,13 +6,13 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 16:27:29 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 13:49:52 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/15 17:34:33 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	index_numbers(t_stack **radix, t_stack *a)
+void	index_numbers(t_stack *a)
 {
 	t_stack	*temp_a;
 	t_stack	*top_stack;
@@ -29,13 +29,7 @@ void	index_numbers(t_stack **radix, t_stack *a)
 				bigger_than++;
 			temp_a = temp_a->next;
 		}
-		temp_a = list_new(bigger_than);
-		if (!temp_a)
-		{
-			free_list(temp_a);
-			break ;
-		}
-		listadd_back(radix, temp_a);
+		a->index = bigger_than;
 		a = a->next;
 	}
 }
@@ -51,7 +45,7 @@ void	radix(t_stack **a, t_stack **b)
 		len = list_len(*a);
 		while (len)
 		{
-			if (((*a)->i & bit_place))
+			if (((*a)->index & bit_place))
 				rotate(a);
 			else
 				pushstack(b, a, 'b');
@@ -63,16 +57,6 @@ void	radix(t_stack **a, t_stack **b)
 			pushstack(a, b, 'a');
 		bit_place = bit_place << 1;
 	}
-}
-
-void	sort_many(t_stack **a, t_stack **b)
-{
-	t_stack	*radix_stack;
-
-	radix_stack = NULL;
-	index_numbers(&radix_stack, *a);
-	radix(&radix_stack, b);
-	free_list(radix_stack);
 }
 
 void	sort(t_stack **a, t_stack **b)
@@ -93,5 +77,8 @@ void	sort(t_stack **a, t_stack **b)
 	else if (len == 5)
 		five(a, min);
 	else
-		sort_many(a, b);
+	{
+		index_numbers(*a);
+		radix(a, b);
+	}
 }

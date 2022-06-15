@@ -6,17 +6,18 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:08:39 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/15 09:07:37 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/15 17:34:13 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-
+#include <stdio.h>
 typedef struct node
 {
 	int			i;
+	int			index;
 	struct node	*previous;
 	struct node	*next;
 }	t_stack;
@@ -48,8 +49,7 @@ t_stack	*list_new(int num);
 void	sort(t_stack **a, t_stack **b);
 void	indexsort(t_stack **a, t_stack **b);
 void	radix(t_stack **a, t_stack **b);
-void	index_numbers(t_stack **radix, t_stack *origin);
-void	sort_many(t_stack **a, t_stack **b);
+void	index_numbers(t_stack *origin);
 
 //sort_utils.c
 int		maxnumber(t_stack *a);

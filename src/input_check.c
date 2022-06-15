@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 14:33:49 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/15 16:47:16 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	ft_dupl(char **arg)
 				k = ft_strlen(arg[j]);
 			if (ft_strncmp(arg[i], arg[j], k) == 0)
 				return (0);
+			if (atoi(arg[i]) == atoi(arg[j]))
+				return (0);	
 			j++;
 		}
 		i++;
