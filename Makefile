@@ -6,7 +6,7 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/10/26 14:06:32 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/06/15 09:15:45 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/06/15 09:35:02 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ CFLAGS 		= 	-Wall -Wextra -Werror
 INCLUDE 	= 	./include
 VPATH 		= 	src
 
-SRC_DIR		=	src
 SRC_FILES 	=	input_check.c\
 				main.c\
 				list.c\
@@ -27,8 +26,6 @@ SRC_FILES 	=	input_check.c\
 				parser.c\
 				sort_small.c\
 				sort_utils.c
-
-HEADER_FILES = 	push_swap.h
 
 # object files
 OBJ_DIR = obj
@@ -51,7 +48,7 @@ $(LIBFT)	:
 ${NAME}		: 	${OBJ_FILES} 
 				$(CC) $(CFLAGS) $^ libft/$(LIBFT) -o $@
 
-$(OBJ_FILES): 	$(OBJ_DIR)/%.o : %.c $(HEADER_FILES)
+$(OBJ_FILES): 	$(OBJ_DIR)/%.o : %.c
 				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:
