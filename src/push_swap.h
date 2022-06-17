@@ -6,14 +6,14 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:08:39 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/17 15:26:44 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/17 19:54:17 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-# include <stdio.h>
+// # include <stdio.h>
 
 typedef struct node
 {
