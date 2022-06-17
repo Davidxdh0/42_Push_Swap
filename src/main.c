@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 16:43:13 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/17 19:45:43 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc == 1)
+	if (argc == 1 || !argv)
 		exit(0);
 	arg = get_inp(argc, argv);
-	if (ft_error(arg) == 1 || !arg)
+	if (!arg || ft_error(arg) == 1)
 		free_message_exit(arg);
 	a = a_stack(arg);
 	b = NULL;
