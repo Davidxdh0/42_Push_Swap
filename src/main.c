@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:41:21 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/17 19:45:43 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/21 10:05:17 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	free_arr(char **arg)
 		return ;
 	while (arg[i])
 		free(arg[i++]);
+	free(arg[i]);
 	free(arg);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 18:09:58 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/17 19:40:46 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/06/21 09:48:30 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**fill_array(int argc, char **argv)
 	int		j;
 	int		k;
 
-	arr = malloc(sizeof(char *) * splitted(argc, argv) + 1);
+	arr = malloc(sizeof(char *) * (splitted(argc, argv) + 1));
 	if (!arr)
 		return (NULL);
 	i = 0;
@@ -57,8 +57,7 @@ char	**fill_array(int argc, char **argv)
 		j = 0;
 		while (splitarr[j])
 		{
-			arr[k++] = ft_strdup(splitarr[j]);
-			j++;
+			arr[k++] = ft_strdup(splitarr[j++]);
 		}
 		i++;
 		free_arr(splitarr);
