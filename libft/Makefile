@@ -6,11 +6,12 @@
 #    By: dyeboa <dyeboa@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/26 15:54:34 by dyeboa        #+#    #+#                  #
-#    Updated: 2022/06/17 15:24:24 by dyeboa        ########   odam.nl          #
+#    Updated: 2022/07/15 13:30:51 by dyeboa        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS=		ft_atoi.c \
+			ft_atol.c \
 			ft_bzero.c \
 			ft_isalnum.c \
 			ft_isalpha.c \

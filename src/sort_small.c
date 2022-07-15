@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:30:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/07/15 13:27:41 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/07/15 13:45:23 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	five(t_stack **a, int min)
 	if ((*a)->i != minnumber(*a))
 		rotate(a);
 	pushstack(a, &b, 'a');
-	if ((*a)->i != minnumber(*a) && (*a)->i != sm(*a))
+	if ((*a)->i != minnumber(*a) && (*a)->i != secondmin(*a))
 		rotate(a);
 	if ((*a)->i != minnumber(*a))
 		swap(a, 'a');
