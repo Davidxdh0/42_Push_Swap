@@ -6,14 +6,14 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:08:39 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/21 10:05:03 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/07/15 13:28:32 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-// # include <stdio.h>
+# include <stdio.h>
 
 typedef struct node
 {
@@ -54,9 +54,8 @@ void	index_numbers(t_stack *origin);
 
 //sort_utils.c
 int		maxnumber(t_stack *a);
-int		m(t_stack *k);
 int		minnumber(t_stack *k);
-int		sm(t_stack *k);
+int		secondmin(t_stack *k);
 
 //sort_small.c
 void	two_numbers(t_stack **a);

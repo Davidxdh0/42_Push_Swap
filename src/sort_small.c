@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:30:06 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 11:33:39 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/07/15 13:27:41 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	four(t_stack **a, int min, int max)
 		rotate(a);
 }
 
-void	five(t_stack **a, int mi)
+void	five(t_stack **a, int min)
 {
 	t_stack	*b;
 	int		i;
@@ -58,10 +58,10 @@ void	five(t_stack **a, int mi)
 	i = 0;
 	while (i != 2)
 	{
-		if ((*a)->i == mi || (*a)->i == m(*a) || ((*a)->i == sm(*a) && i == 0))
+		if ((*a)->i == min || (*a)->i == maxnumber(*a) || ((*a)->i == secondmin(*a) && i == 0))
 		{
 			pushstack(&b, a, 'b');
-			mi = minnumber(*a);
+			min = minnumber(*a);
 			i++;
 		}
 		else

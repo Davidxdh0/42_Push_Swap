@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:23:40 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/10 11:32:35 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/07/15 13:28:20 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	maxnumber(t_stack *k)
 	return (maxnumber);
 }
 
-int	sm(t_stack *k)
+int	secondmin(t_stack *k)
 {
 	int	minnumbers;
 	int	lowest;
@@ -57,19 +57,4 @@ int	sm(t_stack *k)
 			minnumbers = k->i;
 	}
 	return (minnumbers);
-}
-
-int	m(t_stack *k)
-{
-	int	maxnumber;
-
-	maxnumber = k->i;
-	while (k)
-	{
-		if (maxnumber >= k->i)
-			k = k->next;
-		else
-			maxnumber = k->i;
-	}
-	return (maxnumber);
 }

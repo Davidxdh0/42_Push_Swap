@@ -6,7 +6,7 @@
 /*   By: dyeboa <dyeboa@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 11:24:57 by dyeboa        #+#    #+#                 */
-/*   Updated: 2022/06/17 18:36:26 by dyeboa        ########   odam.nl         */
+/*   Updated: 2022/07/15 13:24:39 by dyeboa        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_isnumber(char *arg)
 
 int	ft_isint(char *arg)
 {
-	if ((atol(arg) < -2147483648) || (atol(arg) > 2147483647))
+	if ((ft_atol(arg) < -2147483648) || (atol(arg) > 2147483647))
 		return (1);
 	return (0);
 }
@@ -56,7 +56,7 @@ int	ft_dupl(char **arg)
 				k = ft_strlen(arg[j]);
 			if (ft_strncmp(arg[i], arg[j], k) == 0)
 				return (0);
-			if (atoi(arg[i]) == atoi(arg[j]))
+			if (ft_atoi(arg[i]) == ft_atoi(arg[j]))
 				return (0);
 			j++;
 		}
